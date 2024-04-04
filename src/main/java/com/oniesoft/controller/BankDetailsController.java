@@ -24,7 +24,7 @@ public class BankDetailsController {
     @Autowired
     private BankDetailsRepo bankDetailsRepo;
 
-    @PostMapping("bankdetails-save")
+    @PostMapping("/bankdetails-save")
     public ResponseEntity<?> addBankDetails(@RequestParam String email, @RequestParam String bankName,
                                             @RequestParam String branch, @RequestParam String ifcCode,
                                             @RequestParam String accountNumber, @RequestParam(required = false) MultipartFile bankFile,
@@ -40,7 +40,7 @@ public class BankDetailsController {
         return ResponseEntity.ok("ok");
 
     }
-    @PutMapping("bankdetails-update")
+    @PutMapping("/bankdetails-update")
     public ResponseEntity<?> updateBankDetails(@RequestParam Long regno,@RequestParam String email, @RequestParam String bankName,
                                             @RequestParam String branch, @RequestParam String ifcCode,
                                             @RequestParam String accountNumber, @RequestParam(required = false) MultipartFile bankFile,

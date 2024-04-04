@@ -15,8 +15,8 @@ import java.nio.file.StandardCopyOption;
 @Service
 public class FileServiceImpl implements FileService {
     @Value("${file.upload-dir}")
-    private String uploadDir;
 
+    private String uploadDir;
     public String saveFile(Long regno, String fileType, MultipartFile file) throws IOException {
 
 

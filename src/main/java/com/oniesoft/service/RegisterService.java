@@ -14,4 +14,5 @@ public interface RegisterService {
 public void   setUserDetails(AdminRegisterDto adminRegister);
     public AdminRegisterDto getAdminregister(String mob);
     public void removeAdminRegister(String mob);
+    public AdminRegister getRegister(String email);
 }

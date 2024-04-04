@@ -60,6 +60,9 @@ public class RegisterController {
         List<AdminRegister> regList = registerService.getAdminRegisters();
         return new ArrayList<>(regList);
     }
-
+@GetMapping("/getreg")
+    public AdminRegister getAdminRegister(@RequestParam String email){
+    return registerService.getRegister(email);
+}
 
 }

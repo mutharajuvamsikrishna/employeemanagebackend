@@ -36,9 +36,10 @@ return true;
     @Override
     public boolean verifyForgetOtp(AdminRegisterDto adminRegister) {
         AdminRegisterDto adminRegister1 = registerService.getAdminregister(adminRegister.getMob());
-
         if (adminRegister1.getOtp().equals(adminRegister.getOtp())) {
-            adminRegister1.setPassword(passwordEncoder.encode(adminRegister.getPassword()));
+          AdminRegister adminRegister2=  adminRegisterRepo.findByEmail(adminRegister1.getEmail());
+            adminRegister2.setPassword(passwordEncoder.encode(adminRegister.getPassword()));
+            adminRegisterRepo.save(adminRegister2);
 registerService.removeAdminRegister(adminRegister.getMob());
             return true;
         } else {

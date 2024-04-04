@@ -85,4 +85,9 @@ public class RegisterServiceImpl implements RegisterService {
     public void removeAdminRegister(String mob){
         userMap.remove(mob);
     }
+
+    @Override
+    public AdminRegister getRegister(String email) {
+        return adminRegisterRepo.findByEmail(email);
+    }
 }
