@@ -25,6 +25,7 @@ public class LoginController {
     private JwtService jwtService;
     @Autowired
     private AuthenticationManager authenticationManager;
+
     @GetMapping("/welcome")
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public String welcome() {
@@ -43,7 +44,7 @@ public class LoginController {
             final String jwt = jwtService.generateToken(authRequest.getEmail());
 
             // Create an instance of AuthenticationResponse and return it in the ResponseEntity
-            AuthenticationResponse response = new AuthenticationResponse(jwt,role);
+            AuthenticationResponse response = new AuthenticationResponse(jwt, role);
             return ResponseEntity.ok(response);
         } else {
             throw new UsernameNotFoundException("Invalid user request!");

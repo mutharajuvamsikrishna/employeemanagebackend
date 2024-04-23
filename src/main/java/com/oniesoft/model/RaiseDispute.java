@@ -12,9 +12,15 @@ public class RaiseDispute {
     private int regno;
     private String email;
     private String status;
+    private String selectedSubType;
+    private String  selectedMainType;
     private String description;
+    private String responseText;
     private String complaintDate;
     private String resolvedDate;
+    public RaiseDispute(){
+
+    }
 
     public int getRegno() {
         return regno;
@@ -40,12 +46,36 @@ public class RaiseDispute {
         this.status = status;
     }
 
+    public String getSelectedSubType() {
+        return selectedSubType;
+    }
+
+    public void setSelectedSubType(String selectedSubType) {
+        this.selectedSubType = selectedSubType;
+    }
+
+    public String getSelectedMainType() {
+        return selectedMainType;
+    }
+
+    public void setSelectedMainType(String selectedMainType) {
+        this.selectedMainType = selectedMainType;
+    }
+
     public String getDescription() {
         return description;
     }
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getResponseText() {
+        return responseText;
+    }
+
+    public void setResponseText(String responseText) {
+        this.responseText = responseText;
     }
 
     public String getComplaintDate() {
@@ -70,7 +100,10 @@ public class RaiseDispute {
                 "regno=" + regno +
                 ", email='" + email + '\'' +
                 ", status='" + status + '\'' +
+                ", selectedSubType='" + selectedSubType + '\'' +
+                ", selectedMainType='" + selectedMainType + '\'' +
                 ", description='" + description + '\'' +
+                ", responseText='" + responseText + '\'' +
                 ", complaintDate='" + complaintDate + '\'' +
                 ", resolvedDate='" + resolvedDate + '\'' +
                 '}';

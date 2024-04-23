@@ -7,6 +7,7 @@ public class AdminRegisterDto {
     private String password;
     private String roles;
     private String otp;
+     private String empId;
 
     public String getName() {
         return name;
@@ -56,6 +57,14 @@ public class AdminRegisterDto {
         this.otp = otp;
     }
 
+    public String getEmpId() {
+        return empId;
+    }
+
+    public void setEmpId(String empId) {
+        this.empId = empId;
+    }
+
     @Override
     public String toString() {
         return "AdminRegisterDto{" +
@@ -65,6 +74,7 @@ public class AdminRegisterDto {
                 ", password='" + password + '\'' +
                 ", roles='" + roles + '\'' +
                 ", otp='" + otp + '\'' +
+                ", empId='" + empId + '\'' +
                 '}';
     }
 }

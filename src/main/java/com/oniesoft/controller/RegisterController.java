@@ -5,10 +5,12 @@ import com.oniesoft.model.AdminRegister;
 import com.oniesoft.repository.AdminRegisterRepo;
 import com.oniesoft.service.RegisterService;
 import com.oniesoft.serviceimpl.JwtService;
+import jakarta.annotation.PostConstruct;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -25,8 +27,14 @@ public class RegisterController {
     JwtService jwtService;
     @Value("${frontEnd}")
     String frontendport;
-    @Value("${adminemail}")
-    private String email;
+    @Value("${superadminemail}")
+    private String superAdminEmail;
+    @Value("${superadminpassword}")
+    private String superAdminPassword;
+    @Value("${superadminmob}")
+    private String superAdminMob;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
     @PostMapping("/sendotp")
     public ResponseEntity<String> sendOtp(@RequestBody AdminRegisterDto adminRegisterDto) {
         AdminRegister adminRegister = adminRegisterRepo.findByEmailAndMob(adminRegisterDto.getEmail(), adminRegisterDto.getMob());
@@ -64,5 +72,17 @@ public class RegisterController {
     public AdminRegister getAdminRegister(@RequestParam String email){
     return registerService.getRegister(email);
 }
+@PostConstruct
+    public void addSuperAdmin(){
+       AdminRegister adminRegister=new AdminRegister();
+       adminRegister.setRoles("ROLE_SUPERADMIN");
+       adminRegister.setEmail(superAdminEmail);
+       adminRegister.setPassword(passwordEncoder.encode(superAdminPassword));
+       adminRegister.setName("ONiE Soft");
+       adminRegister.setMob(superAdminMob);
+  adminRegisterRepo.save(adminRegister);
 
 }
+
+}
+

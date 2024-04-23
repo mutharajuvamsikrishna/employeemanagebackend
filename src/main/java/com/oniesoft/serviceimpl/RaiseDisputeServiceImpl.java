@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public class RaiseDisputeServiceImpl implements RaiseDisputeService {
     @Autowired
@@ -19,5 +21,25 @@ public class RaiseDisputeServiceImpl implements RaiseDisputeService {
     @Override
     public List<RaiseDispute> getDisputeDetails(String email) {
         return raiseDisputeRepo.findByEmail(email);
+    }
+
+    @Override
+    public List<RaiseDispute> searchRaiseDispute(String query) {
+            List<RaiseDispute> raiseDisputeList=raiseDisputeRepo.searchRaiseDispute(query);
+            return raiseDisputeList;
+        }
+
+    @Override
+    public List<RaiseDispute> getAllTickets() {
+        return raiseDisputeRepo.findAll();
+    }
+
+    @Override
+    public void putRaisTicketDetails(RaiseDispute raiseDispute) {
+        System.out.println(raiseDispute.getRegno());
+        Optional<RaiseDispute> raiseDispute1 =raiseDisputeRepo.findById(raiseDispute.getRegno());
+         RaiseDispute raiseDispute2=raiseDispute1.get();
+         raiseDisputeRepo.save(raiseDispute);
+
     }
 }

@@ -61,7 +61,7 @@ public class BankDetailsController {
         System.out.println("OKKK");
         BankDetails bankDetails = bankDetailsRepo.findByEmail(email);
         if (bankDetails != null) {
-            List<String> filePaths = getFilePathsForPerEmp(bankDetails);
+            List<String> filePaths = getFilePathsForBank(bankDetails);
             List<byte[]> fileContents = getFileContents(filePaths);
             BankDetailsDto bankDetailsDto = new BankDetailsDto();
             bankDetailsDto.setRegno(bankDetails.getRegno());
@@ -78,7 +78,7 @@ public class BankDetailsController {
             return ResponseEntity.notFound().build();
         }
     }
-    private List<String> getFilePathsForPerEmp(BankDetails bankDetails) {
+    private List<String> getFilePathsForBank(BankDetails bankDetails) {
         List<String> filePaths = new ArrayList<>();
         filePaths.add(bankDetails.getBankFile());
         return filePaths;

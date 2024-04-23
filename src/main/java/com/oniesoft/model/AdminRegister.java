@@ -15,9 +15,18 @@ public class AdminRegister {
     private String email;
     private String password;
     private String roles;
+    private String empId;
 public AdminRegister(){
 
 }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -59,14 +68,24 @@ public AdminRegister(){
         this.roles = roles;
     }
 
+    public String getEmpId() {
+        return empId;
+    }
+
+    public void setEmpId(String empId) {
+        this.empId = empId;
+    }
+
     @Override
     public String toString() {
         return "AdminRegister{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", mob='" + mob + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", roles='" + roles + '\'' +
+                ", empId='" + empId + '\'' +
                 '}';
     }
 }
