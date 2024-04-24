@@ -16,6 +16,9 @@ public class AdminRegister {
     private String password;
     private String roles;
     private String empId;
+    private String personalEmail;
+    private String ctc;
+    private boolean checkBox;
 public AdminRegister(){
 
 }
@@ -76,6 +79,30 @@ public AdminRegister(){
         this.empId = empId;
     }
 
+    public String getPersonalEmail() {
+        return personalEmail;
+    }
+
+    public void setPersonalEmail(String personalEmail) {
+        this.personalEmail = personalEmail;
+    }
+
+    public String getCtc() {
+        return ctc;
+    }
+
+    public void setCtc(String ctc) {
+        this.ctc = ctc;
+    }
+
+    public boolean isCheckBox() {
+        return checkBox;
+    }
+
+    public void setCheckBox(boolean checkBox) {
+        this.checkBox = checkBox;
+    }
+
     @Override
     public String toString() {
         return "AdminRegister{" +
@@ -86,6 +113,9 @@ public AdminRegister(){
                 ", password='" + password + '\'' +
                 ", roles='" + roles + '\'' +
                 ", empId='" + empId + '\'' +
+                ", personalEmail='" + personalEmail + '\'' +
+                ", ctc='" + ctc + '\'' +
+                ", checkBox=" + checkBox +
                 '}';
     }
 }

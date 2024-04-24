@@ -13,38 +13,38 @@ import java.util.List;
 public class AdminComtroller {
     @Autowired
     private AdminService adminService;
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+   @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_SUPERADMIN')")
     @GetMapping("/getadmindetails")
     public List<AdminRegister> getAdminDetails(){
         System.out.println("ok");
        return adminService.getAllAdminRegisters();
     }
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+   @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_SUPERADMIN')")
     @GetMapping("/getbankdetails")
     public List<BankDetails> getBankDetails(){
         return adminService.getAllBankDetails();
     }
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+   @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_SUPERADMIN')")
     @GetMapping("/getemergencydetails")
     public List<EmergencyDetails> getEmergencyDetails(){
         return adminService.getAllEmergencyDetails();
     }
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+   @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_SUPERADMIN')")
     @GetMapping("/getemployeedetails")
     public List<EmployeeDetails> getEmployeeDetails(){
         return adminService.getAllEmployeeeDetails();
     }
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+   @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_SUPERADMIN')")
     @GetMapping("/getfamilydetails")
     public List<FamilyDetails> getFamilyDetails(){
         return adminService.getAllFamilyDetails();
     }
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+   @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_SUPERADMIN')")
     @GetMapping("/getpersonaldetails")
     public List<PersonalDetails> getPersonalDetails(){
         return adminService.getAllPersonalDetails();
     }
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+   @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_SUPERADMIN')")
     @DeleteMapping("/deleteadminregister")
     public ResponseEntity<?> deleteAdminRegister(@RequestParam String email) {
         String status = adminService.deleteAdminRegister(email);
@@ -54,7 +54,7 @@ public class AdminComtroller {
            return ResponseEntity.status(404).body("an unexpected error");
         }
     }
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+   @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_SUPERADMIN')")
     @DeleteMapping("/deletebankdetails")
     public ResponseEntity<?> deleteBank(@RequestParam String email) {
         String status = adminService.deleteBankDetails(email);
@@ -64,7 +64,7 @@ public class AdminComtroller {
             return ResponseEntity.status(404).body("an unexpected error");
         }
     }
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+   @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_SUPERADMIN')")
     @DeleteMapping("/deleteemergemcydetails")
     public ResponseEntity<?> deleteEmergencyDetails(@RequestParam String email) {
         String status = adminService.deleteEmergencyDetails(email);
@@ -74,7 +74,7 @@ public class AdminComtroller {
             return ResponseEntity.status(404).body("an unexpected error");
         }
     }
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+   @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_SUPERADMIN')")
     @DeleteMapping("/deleteemployeedetails")
     public ResponseEntity<?> deleteEmployeeDetails(@RequestParam String email) {
         String status = adminService.deleteEmployeeDetails(email);
@@ -84,7 +84,7 @@ public class AdminComtroller {
             return ResponseEntity.status(404).body("an unexpected error");
         }
     }
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+   @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_SUPERADMIN')")
     @DeleteMapping("/deletefamilydetails")
     public ResponseEntity<?> deleteFamilyDetails(@RequestParam String email) {
         String status = adminService.deleteFamilyDetails(email);
@@ -94,7 +94,7 @@ public class AdminComtroller {
             return ResponseEntity.status(404).body("an unexpected error");
         }
     }
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+   @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_SUPERADMIN')")
     @DeleteMapping("/deletepersonaldetails")
     public ResponseEntity<?> deletePersonalDetails(@RequestParam String email) {
         String status = adminService.deletePersonalDetails(email);
@@ -104,32 +104,32 @@ public class AdminComtroller {
             return ResponseEntity.status(404).body("an unexpected error");
         }
     }
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+   @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_SUPERADMIN')")
     @GetMapping("/searchadminregister")
     public List<AdminRegister> searchAdminRegister(@RequestParam String query){
       return adminService.searchAdminRegister(query);
     }
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+   @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_SUPERADMIN')")
     @GetMapping("/searchbankdetails")
     public List<BankDetails> searchBankDetails(@RequestParam String query){
         return adminService.searchBankDetails(query);
     }
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+   @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_SUPERADMIN')")
     @GetMapping("/searchemergencydetails")
     public List<EmergencyDetails> searchEmergency(@RequestParam String query){
         return adminService.searchEmergencyDetails(query);
     }
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+   @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_SUPERADMIN')")
     @GetMapping("/searchemployeedetails")
     public List<EmployeeDetails> searchEmployee(@RequestParam String query){
         return adminService.searchEmployeeDetails(query);
     }
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+   @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_SUPERADMIN')")
     @GetMapping("/searchfamilydetails")
     public List<FamilyDetails> searchFamily(@RequestParam String query){
         return adminService.searchFamilyDetails(query);
     }
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+   @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_SUPERADMIN')")
     @GetMapping("/searchpersonaldetails")
     public List<PersonalDetails> search(@RequestParam String query){
         return adminService.searchPersonalDetails(query);

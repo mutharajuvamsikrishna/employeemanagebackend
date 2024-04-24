@@ -1,5 +1,6 @@
 package com.oniesoft.controller;
 
+import com.oniesoft.model.AdminCheckList;
 import com.oniesoft.model.EmployeeCheckList;
 import com.oniesoft.repository.EmployeeCheckListAdminRepo;
 import com.oniesoft.repository.EmployeeCheckListRepo;
@@ -16,7 +17,7 @@ import java.util.Optional;
 @RequestMapping("/checklist/v1")
 public class EmployeeCheckListController {
     @Autowired
-  private   EmployeeCheckListServiceImpl employeeCheckListService;
+    private   EmployeeCheckListServiceImpl employeeCheckListService;
     @Autowired
     private EmployeeCheckListServiceAdminImpl employeeCheckListServiceAdmin;
     @Autowired
@@ -25,35 +26,35 @@ public class EmployeeCheckListController {
     private EmployeeCheckListAdminRepo employeeCheckListAdminRepo;
     @PostMapping("/userchecklist-save")
     public ResponseEntity<?> addUserCheckList(@RequestBody EmployeeCheckList employeeCheckList){
-     Optional<EmployeeCheckList> employeeCheckList1=   employeeCheckListRepo.findById(employeeCheckList.getEmail());
-     if(employeeCheckList1.isEmpty()) {
-         employeeCheckListService.addNewBeeCheckList(employeeCheckList);
-     }else{
+        Optional<EmployeeCheckList> employeeCheckList1=   employeeCheckListRepo.findById(employeeCheckList.getEmail());
+        if(employeeCheckList1.isEmpty()) {
+            employeeCheckListService.addNewBeeCheckList(employeeCheckList);
+        }else{
 
-         employeeCheckListService.addNewBeeCheckList(employeeCheckList);
-     }
-     return ResponseEntity.ok("Details Saved Suceessfully");
+            employeeCheckListService.addNewBeeCheckList(employeeCheckList);
+        }
+        return ResponseEntity.ok("Details Saved Suceessfully");
     }
     @GetMapping("/userchecklist-get")
     public List<EmployeeCheckList> getUserCheckList(@RequestParam String email){
-       return employeeCheckListService.getcheckList(email);
+        return employeeCheckListService.getcheckList(email);
     }
     @PostMapping("/adminchecklist-save")
-    public ResponseEntity<?> addAdminCheckList(@RequestBody EmployeeCheckList employeeCheckList){
-        Optional<EmployeeCheckList> employeeCheckList1=   employeeCheckListAdminRepo.findById(employeeCheckList.getEmail());
-        if(employeeCheckList1.isEmpty()) {
-            employeeCheckListServiceAdmin.addNewBeeCheckList(employeeCheckList);
+    public ResponseEntity<?> addAdminCheckList(@RequestBody AdminCheckList adminCheckList){
+        Optional<AdminCheckList> adminCheckList1=   employeeCheckListAdminRepo.findById(adminCheckList.getEmail());
+        if(adminCheckList1.isEmpty()) {
+            employeeCheckListServiceAdmin.addAdminNewBeeCheckList(adminCheckList);
         }else{
-            employeeCheckListServiceAdmin.addNewBeeCheckList(employeeCheckList);
+            employeeCheckListServiceAdmin.addAdminNewBeeCheckList(adminCheckList);
         }
         return ResponseEntity.ok("Details Saved Suceessfully");
     }
     @GetMapping("/adminchecklist-get")
-    public List<EmployeeCheckList> getAdminCheckList(@RequestParam String email){
-        return employeeCheckListServiceAdmin.getcheckList(email);
+    public List<AdminCheckList> getAdminCheckList(@RequestParam String email){
+        return employeeCheckListServiceAdmin.getAdmincheckList(email);
     }
     @GetMapping("/adminchecklist-getall")
-    public List<EmployeeCheckList> getAllAdminCheckList(){
+    public List<AdminCheckList> getAllAdminCheckList(){
         return employeeCheckListServiceAdmin.getAllCheckList();
     }
 

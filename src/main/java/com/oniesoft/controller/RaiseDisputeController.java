@@ -60,17 +60,17 @@ public class RaiseDisputeController {
     public List<RaiseDispute> getRaiseDisputeDetails(@RequestParam String email){
         return raiseDisputeService.getDisputeDetails(email);
     }
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+   @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_SUPERADMIN')")
     @GetMapping("/searchtickets")
     public List<RaiseDispute> searchTickets(@RequestParam String query){
         return raiseDisputeService.searchRaiseDispute(query);
     }
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+   @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_SUPERADMIN')")
     @GetMapping("/getalltickets")
     public List<RaiseDispute> getTickets(){
         return raiseDisputeService.getAllTickets();
     }
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+   @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_SUPERADMIN')")
     @PutMapping("/ticket-update")
     public ResponseEntity<?> upDtateTickets(@RequestBody RaiseDispute raiseDispute){
         raiseDisputeService.putRaisTicketDetails(raiseDispute);

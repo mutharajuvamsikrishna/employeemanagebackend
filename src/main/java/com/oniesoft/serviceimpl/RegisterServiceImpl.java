@@ -26,6 +26,8 @@ public class RegisterServiceImpl implements RegisterService {
     private JavaMailSender javaMailSender;
     @Value("${adminemail}")
   private   String email;
+    @Value("${defaultpassword}")
+    private String password;
     private HashMap<String, AdminRegisterDto> userMap = new HashMap<>();
     @Override
     public String sendEmail(String receipent, String subject, String body) {
@@ -89,5 +91,18 @@ public class RegisterServiceImpl implements RegisterService {
     @Override
     public AdminRegister getRegister(String email) {
         return adminRegisterRepo.findByEmail(email);
+    }
+
+    @Override
+    public AdminRegister addEmployeeByAdmin(AdminRegister adminRegister) {
+        adminRegister.setPassword(passwordEncoder.encode(password));
+        String userSubject = "";
+        String userBody = "";
+        sendEmail(adminRegister.getPersonalEmail(), userSubject, userBody);
+        String adminSubject="";
+        String adminBody="";
+        sendEmail(email,adminSubject,adminBody);
+       AdminRegister adminRegister1= adminRegisterRepo.save(adminRegister);
+       return  adminRegister1;
     }
 }

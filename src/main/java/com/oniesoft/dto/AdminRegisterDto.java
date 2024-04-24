@@ -1,6 +1,7 @@
 package com.oniesoft.dto;
 
 public class AdminRegisterDto {
+    private int id;
     private String name;
     private String mob;
     private String email;
@@ -8,6 +9,18 @@ public class AdminRegisterDto {
     private String roles;
     private String otp;
      private String empId;
+
+    public AdminRegisterDto(){
+
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -68,7 +81,8 @@ public class AdminRegisterDto {
     @Override
     public String toString() {
         return "AdminRegisterDto{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", mob='" + mob + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
