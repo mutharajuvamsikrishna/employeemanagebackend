@@ -11,8 +11,8 @@ import java.util.List;
 @Repository
 public interface EmergencyDetailsRepo extends JpaRepository <EmergencyDetails,String>{
 
-    List<EmergencyDetails> findByEmail(String email);
-    void deleteByEmail(String email);
-    @Query("SELECT p FROM EmergencyDetails p WHERE " + "p.email LIKE CONCAT('%', :query, '%') ")
+    List<EmergencyDetails> findByEmpId(String empId);
+    void deleteByEmpId(String empId);
+    @Query("SELECT p FROM EmergencyDetails p WHERE " + "p.empId LIKE CONCAT('%', :query, '%') ")
     List<EmergencyDetails> searchEmergencyDetails(@Param("query") String query);
 }

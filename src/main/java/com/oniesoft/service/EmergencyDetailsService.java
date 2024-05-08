@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface EmergencyDetailsService {
     public void addEmergencyDetails(EmergencyDetails emergencyDetails);
-    public List<EmergencyDetails> getEmergencyDetails(String email);
+    public List<EmergencyDetails> getEmergencyDetails(String empId);
 }

@@ -7,4 +7,5 @@ import java.io.IOException;
 
 public interface AvatarService {
     public void addAvatar(Avatar avatar, MultipartFile avatarFile) throws IOException;
+    public void deleteAvatarImage( String empId);
 }

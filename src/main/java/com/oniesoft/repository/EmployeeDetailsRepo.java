@@ -10,8 +10,8 @@ import java.util.List;
 
 @Repository
 public interface EmployeeDetailsRepo extends JpaRepository<EmployeeDetails,Integer> {
-List<EmployeeDetails> findByEmail(String email);
-    void deleteByEmail(String email);
-    @Query("SELECT p FROM EmployeeDetails p WHERE " + "p.email LIKE CONCAT('%', :query, '%') ")
+List<EmployeeDetails> findByEmpId(String empId);
+    void deleteByEmpId(String empId);
+    @Query("SELECT p FROM EmployeeDetails p WHERE " + "p.empId LIKE CONCAT('%', :query, '%') ")
     List<EmployeeDetails> searchEmployeeDetails(@Param("query") String query);
 }

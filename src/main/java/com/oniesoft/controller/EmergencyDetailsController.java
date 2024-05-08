@@ -20,8 +20,8 @@ public class EmergencyDetailsController {
 
     }
     @GetMapping("/getemergencydetails")
-    public List<EmergencyDetails> getEmergencyDetails(@RequestParam String email){
-        return emergencyDetailsService.getEmergencyDetails(email);
+    public List<EmergencyDetails> getEmergencyDetails(@RequestParam String empId){
+        return emergencyDetailsService.getEmergencyDetails(empId);
     }
     @PutMapping("/emergencydetails-update")
     public ResponseEntity<?> updateEmergencyDetails(@RequestBody EmergencyDetails emergencyDetails){

@@ -6,7 +6,7 @@ import jakarta.persistence.Id;
 @Entity
 public class EmployeeCheckList {
     @Id
-    private String email;
+    private String empId;
   private boolean candidateConfirmation;
     private boolean hrAssignment;
     private boolean submitRelievingLetter;
@@ -36,12 +36,12 @@ public class EmployeeCheckList {
 
     }
 
-    public String getEmail() {
-        return email;
+    public String getEmpId() {
+        return empId;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmpId(String empId) {
+        this.empId = empId;
     }
 
     public boolean isCandidateConfirmation() {
@@ -247,7 +247,7 @@ public class EmployeeCheckList {
     @Override
     public String toString() {
         return "EmployeeCheckList{" +
-                "email='" + email + '\'' +
+                "empId='" + empId + '\'' +
                 ", candidateConfirmation=" + candidateConfirmation +
                 ", hrAssignment=" + hrAssignment +
                 ", submitRelievingLetter=" + submitRelievingLetter +

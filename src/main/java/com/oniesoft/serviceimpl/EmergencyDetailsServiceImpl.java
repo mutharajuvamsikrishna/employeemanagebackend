@@ -17,7 +17,7 @@ public class EmergencyDetailsServiceImpl implements EmergencyDetailsService {
     }
 
     @Override
-    public List<EmergencyDetails> getEmergencyDetails(String email) {
-        return emergencyDetailsRepo.findByEmail(email);
+    public List<EmergencyDetails> getEmergencyDetails(String empId) {
+        return emergencyDetailsRepo.findByEmpId(empId);
     }
 }

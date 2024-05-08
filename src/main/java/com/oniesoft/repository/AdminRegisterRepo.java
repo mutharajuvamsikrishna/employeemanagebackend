@@ -9,18 +9,20 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface AdminRegisterRepo extends JpaRepository<AdminRegister,Integer> {
+public interface AdminRegisterRepo extends JpaRepository<AdminRegister, Integer> {
     AdminRegister findByEmail(String email);
 
+    AdminRegister findByEmpId(String empId);
+
     AdminRegister findByEmailAndPassword(String email, String password);
-    
+
     List<AdminRegister> findAll();
 
-    AdminRegister findByEmailAndMob(String email, String mob);
+    AdminRegister findByEmailOrMob(String email, String mob);
 
-    void deleteByEmail(String email);
-    @Query("SELECT p FROM AdminRegister p WHERE " + "p.email LIKE CONCAT('%', :query, '%') "
-            + "OR p.name LIKE CONCAT('%', :query, '%')" + "OR p.mob LIKE CONCAT('%', :query, '%')")
+    void deleteByEmpId(String empId);
+
+    @Query("SELECT p FROM AdminRegister p WHERE " + "p.email LIKE CONCAT('%', :query, '%') " + "OR p.name LIKE CONCAT('%', :query, '%')" + "OR p.mob LIKE CONCAT('%', :query, '%')" + "OR p.empId LIKE CONCAT('%', :query, '%')")
     List<AdminRegister> searchAdminDetails(@Param("query") String query);
 
 

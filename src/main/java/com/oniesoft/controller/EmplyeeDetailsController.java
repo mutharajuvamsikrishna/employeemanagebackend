@@ -21,8 +21,8 @@ public class EmplyeeDetailsController {
 
     }
     @GetMapping("/getemployeedetails")
-    public List<EmployeeDetails> getEmployeeDetails(@RequestParam String email){
-        return employeeDetailsService.getEmployeeDetails(email);
+    public List<EmployeeDetails> getEmployeeDetails(@RequestParam String empId){
+        return employeeDetailsService.getEmployeeDetails(empId);
     }
     @PutMapping("/employeedetails-update")
     public ResponseEntity<?> updateEmployeeDetails(@RequestBody EmployeeDetails employeeDetails){

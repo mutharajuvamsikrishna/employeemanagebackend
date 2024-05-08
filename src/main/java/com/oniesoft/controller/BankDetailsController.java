@@ -25,12 +25,12 @@ public class BankDetailsController {
     private BankDetailsRepo bankDetailsRepo;
 
     @PostMapping("/bankdetails-save")
-    public ResponseEntity<?> addBankDetails(@RequestParam String email, @RequestParam String bankName,
+    public ResponseEntity<?> addBankDetails(@RequestParam String empId, @RequestParam String bankName,
                                             @RequestParam String branch, @RequestParam String ifcCode,
                                             @RequestParam String accountNumber, @RequestParam(required = false) MultipartFile bankFile,
                                             @RequestParam String name) throws IOException {
         BankDetails bankDetails = new BankDetails();
-        bankDetails.setEmail(email);
+        bankDetails.setEmpId(empId);
         bankDetails.setBankName(bankName);
         bankDetails.setBranch(branch);
         bankDetails.setIfcCode(ifcCode);
@@ -41,12 +41,12 @@ public class BankDetailsController {
 
     }
     @PutMapping("/bankdetails-update")
-    public ResponseEntity<?> updateBankDetails(@RequestParam Long regno,@RequestParam String email, @RequestParam String bankName,
+    public ResponseEntity<?> updateBankDetails(@RequestParam Long regno,@RequestParam String empId, @RequestParam String bankName,
                                             @RequestParam String branch, @RequestParam String ifcCode,
                                             @RequestParam String accountNumber, @RequestParam(required = false) MultipartFile bankFile,
                                             @RequestParam String name) throws IOException {
 
-        BankDetails bankDetails =bankDetailsRepo.findByEmail(email);
+        BankDetails bankDetails =bankDetailsRepo.findByEmpId(empId);
         bankDetails.setBankName(bankName);
         bankDetails.setBranch(branch);
         bankDetails.setIfcCode(ifcCode);
@@ -57,15 +57,15 @@ public class BankDetailsController {
 
     }
     @GetMapping(value = "/getbankdetails", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<BankDetailsDto> getBankDetails(@RequestParam String email) {
+    public ResponseEntity<BankDetailsDto> getBankDetails(@RequestParam String empId) {
         System.out.println("OKKK");
-        BankDetails bankDetails = bankDetailsRepo.findByEmail(email);
+        BankDetails bankDetails = bankDetailsRepo.findByEmpId(empId);
         if (bankDetails != null) {
             List<String> filePaths = getFilePathsForBank(bankDetails);
             List<byte[]> fileContents = getFileContents(filePaths);
             BankDetailsDto bankDetailsDto = new BankDetailsDto();
             bankDetailsDto.setRegno(bankDetails.getRegno());
-            bankDetailsDto.setEmail(bankDetails.getEmail());
+            bankDetailsDto.setEmpId(bankDetails.getEmpId());
             bankDetailsDto.setBankName(bankDetails.getBankName());
             bankDetailsDto.setBranch(bankDetails.getBranch());
             bankDetailsDto.setIfcCode(bankDetails.getIfcCode());

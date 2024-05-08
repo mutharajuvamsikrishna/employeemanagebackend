@@ -19,11 +19,11 @@ public class UserInfoUserDetailsService implements UserDetailsService {
     private AdminRegisterRepo repository;
 
     @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String empId) throws UsernameNotFoundException {
 
-        Optional<AdminRegister> userInfo = Optional.ofNullable(repository.findByEmail(email));
+        Optional<AdminRegister> userInfo = Optional.ofNullable(repository.findByEmpId(empId));
         return userInfo.map(UserInfoUserDetails::new)
-                .orElseThrow(() -> new UsernameNotFoundException("user not found " + email));
+                .orElseThrow(() -> new UsernameNotFoundException("user not found " + empId));
 
     }
 }

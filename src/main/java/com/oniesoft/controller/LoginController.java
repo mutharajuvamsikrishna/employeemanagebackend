@@ -3,7 +3,6 @@ package com.oniesoft.controller;
 import com.oniesoft.jwtresponse.AuthenticationResponse;
 import com.oniesoft.model.AdminRegister;
 import com.oniesoft.repository.AdminRegisterRepo;
-import com.oniesoft.service.LoginService;
 import com.oniesoft.serviceimpl.JwtService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,8 +18,7 @@ import org.springframework.web.bind.annotation.*;
 public class LoginController {
     @Autowired
     AdminRegisterRepo adminRegisterRepo;
-    @Autowired
-    LoginService loginService;
+
     @Autowired
     private JwtService jwtService;
     @Autowired
@@ -34,14 +32,14 @@ public class LoginController {
 
     @PostMapping("/authenticate")
     public ResponseEntity<AuthenticationResponse> authenticateAndGetToken(@RequestBody AdminRegister authRequest) {
-        String email = authRequest.getEmail();
-        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getEmail(), authRequest.getPassword()));
+        String empId = authRequest.getEmpId();
+        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getEmpId(), authRequest.getPassword()));
         if (authentication.isAuthenticated()) {
-            AdminRegister userRole = adminRegisterRepo.findByEmail(email);
+            AdminRegister userRole = adminRegisterRepo.findByEmpId(empId);
 
             String role = (userRole != null) ? userRole.getRoles() : "";
 
-            final String jwt = jwtService.generateToken(authRequest.getEmail());
+            final String jwt = jwtService.generateToken(authRequest.getEmpId());
 
             // Create an instance of AuthenticationResponse and return it in the ResponseEntity
             AuthenticationResponse response = new AuthenticationResponse(jwt, role);

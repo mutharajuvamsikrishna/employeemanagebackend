@@ -17,41 +17,50 @@ import java.util.Optional;
 @RequestMapping("/checklist/v1")
 public class EmployeeCheckListController {
     @Autowired
-    private   EmployeeCheckListServiceImpl employeeCheckListService;
+    private EmployeeCheckListServiceImpl employeeCheckListService;
     @Autowired
     private EmployeeCheckListServiceAdminImpl employeeCheckListServiceAdmin;
     @Autowired
     private EmployeeCheckListRepo employeeCheckListRepo;
     @Autowired
     private EmployeeCheckListAdminRepo employeeCheckListAdminRepo;
-    @PostMapping("/userchecklist-save")
-    public ResponseEntity<?> addUserCheckList(@RequestBody EmployeeCheckList employeeCheckList){
-        Optional<EmployeeCheckList> employeeCheckList1=   employeeCheckListRepo.findById(employeeCheckList.getEmail());
-        if(employeeCheckList1.isEmpty()) {
-            employeeCheckListService.addNewBeeCheckList(employeeCheckList);
-        }else{
 
+    @PostMapping("/userchecklist-save")
+    public ResponseEntity<?> addUserCheckList(@RequestBody EmployeeCheckList employeeCheckList) {
+        Optional<EmployeeCheckList> employeeCheckList1 = employeeCheckListRepo.findById(employeeCheckList.getEmpId());
+        if (employeeCheckList1.isEmpty()) {
             employeeCheckListService.addNewBeeCheckList(employeeCheckList);
+        } else {
+
+            employeeCheckListService.updateNewBeeCheckList(employeeCheckList);
         }
         return ResponseEntity.ok("Details Saved Suceessfully");
     }
+
     @GetMapping("/userchecklist-get")
-    public List<EmployeeCheckList> getUserCheckList(@RequestParam String email){
-        return employeeCheckListService.getcheckList(email);
+    public List<EmployeeCheckList> getUserCheckList(@RequestParam String empId) {
+        return employeeCheckListService.getcheckList(empId);
     }
+
     @PostMapping("/adminchecklist-save")
-    public ResponseEntity<?> addAdminCheckList(@RequestBody AdminCheckList adminCheckList){
-        Optional<AdminCheckList> adminCheckList1=   employeeCheckListAdminRepo.findById(adminCheckList.getEmail());
-        if(adminCheckList1.isEmpty()) {
-            employeeCheckListServiceAdmin.addAdminNewBeeCheckList(adminCheckList);
-        }else{
-            employeeCheckListServiceAdmin.addAdminNewBeeCheckList(adminCheckList);
-        }
+    public ResponseEntity<?> addAdminCheckList(@RequestBody AdminCheckList adminCheckList) {
+
+
+        employeeCheckListServiceAdmin.addAdminNewBeeCheckList(adminCheckList);
+
         return ResponseEntity.ok("Details Saved Suceessfully");
-    }
+}
+@PutMapping("/adminchecklist-update")
+public ResponseEntity<?> updateAdminCheckList(@RequestBody AdminCheckList adminCheckList) {
+
+
+    employeeCheckListServiceAdmin.addAdminNewBeeCheckList(adminCheckList);
+
+    return ResponseEntity.ok("Details Saved Suceessfully");
+}
     @GetMapping("/adminchecklist-get")
-    public List<AdminCheckList> getAdminCheckList(@RequestParam String email){
-        return employeeCheckListServiceAdmin.getAdmincheckList(email);
+    public List<AdminCheckList> getAdminCheckList(@RequestParam String empId){
+        return employeeCheckListServiceAdmin.getAdmincheckList(empId);
     }
     @GetMapping("/adminchecklist-getall")
     public List<AdminCheckList> getAllAdminCheckList(){

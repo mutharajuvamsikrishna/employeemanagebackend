@@ -28,6 +28,8 @@ public class RegisterServiceImpl implements RegisterService {
   private   String email;
     @Value("${defaultpassword}")
     private String password;
+    @Value("${loginUrl}")
+    private String loginUrl;
     private HashMap<String, AdminRegisterDto> userMap = new HashMap<>();
     @Override
     public String sendEmail(String receipent, String subject, String body) {
@@ -89,20 +91,59 @@ public class RegisterServiceImpl implements RegisterService {
     }
 
     @Override
-    public AdminRegister getRegister(String email) {
-        return adminRegisterRepo.findByEmail(email);
+    public AdminRegister getRegister(String empId) {
+        return adminRegisterRepo.findByEmpId(empId);
     }
 
     @Override
     public AdminRegister addEmployeeByAdmin(AdminRegister adminRegister) {
+        if(adminRegister.getEmpId()!=null){
+            String userSubject = adminRegister.getName()+" Welcome to Onie Soft1.";
+            String userBody ="Dear " + adminRegister.getName() + ",\n" +
+                    "Hartley welcome to Onie Soft family.\n" +
+                    "Thank you for trusting Onie Soft principles, policies and joining us today.\n\n" +
+                    "These are your details ...\n" +
+                    "Name: " + adminRegister.getName() + "\n" +
+                    "Designation: " + adminRegister.getDesignation()+ "\n" +
+                    "CTC: " + adminRegister.getCtc() + " LPA\n\n" +
+                    "New Bee Portal Link: " + loginUrl + "\n" +
+                    "Employee ID / Login ID: " + adminRegister.getEmpId()+ "\n" +
+                    "Default Password: " + password + "\n\n" +
+                    "Please ensure to change the password on first login.\n\n" +
+                    "We wish you all the success and great learning in this new journey at Onie Soft.\n\n" +
+                    "With Best Wishes,\n" +
+                    "HR Team\n" +
+                    "Onie Soft Pvt Ltd.";;
+            sendEmail(adminRegister.getPersonalEmail(), userSubject, userBody);
+            String adminSubject=adminRegister.getName()+" Joined";;
+            sendEmail(email,adminSubject,userBody);
+            adminRegisterRepo.save(adminRegister);
+            return  adminRegister;
+        }
         adminRegister.setPassword(passwordEncoder.encode(password));
-        String userSubject = "";
-        String userBody = "";
+        AdminRegister adminRegister1= adminRegisterRepo.save(adminRegister);
+        String userSubject = adminRegister.getName()+" Welcome to Onie Soft.";
+             adminRegister1.setEmpId("E-"+adminRegister1.getId());
+             String empId=adminRegister1.getEmpId();
+             adminRegisterRepo.save(adminRegister1);
+        String userBody ="Dear " + adminRegister.getName() + ",\n" +
+                "Hartley welcome to Onie Soft family.\n" +
+                "Thank you for trusting Onie Soft principles, policies and joining us today.\n\n" +
+                "These are your details ...\n" +
+                "Name: " + adminRegister.getName() + "\n" +
+                "Designation: " + adminRegister.getDesignation()+ "\n" +
+                "CTC: " + adminRegister.getCtc() + " LPA\n\n" +
+                "New Bee Portal Link: " + loginUrl + "\n" +
+                "Employee ID / Login ID: " + empId+ "\n" +
+                "Default Password: " + password + "\n\n" +
+                "Please ensure to change the password on first login.\n\n" +
+                "We wish you all the success and great learning in this new journey at Onie Soft.\n\n" +
+                "With Best Wishes,\n" +
+                "HR Team\n" +
+                "Onie Soft Pvt Ltd.";;
         sendEmail(adminRegister.getPersonalEmail(), userSubject, userBody);
-        String adminSubject="";
-        String adminBody="";
-        sendEmail(email,adminSubject,adminBody);
-       AdminRegister adminRegister1= adminRegisterRepo.save(adminRegister);
+        String adminSubject=adminRegister.getName()+" Joined";;
+        sendEmail(email,adminSubject,userBody);
        return  adminRegister1;
     }
 }

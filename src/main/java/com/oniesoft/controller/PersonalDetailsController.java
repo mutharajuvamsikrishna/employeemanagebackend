@@ -27,7 +27,7 @@ public class PersonalDetailsController {
 
     @PostMapping("/personaldetailssave")
     public ResponseEntity<String> savePerEmpWithFiles(
-            @RequestParam(value = "email", required = false) String email,
+            @RequestParam(value = "empId", required = false) String empId,
             @RequestParam(value = "aadhar", required = false) String aadhar,
             @RequestParam(value = "pan", required = false) String pan,
             @RequestParam(value = "val1", required = false) String val1,
@@ -53,7 +53,7 @@ public class PersonalDetailsController {
         try {
             PersonalDetails personalDetails = new PersonalDetails();
             // Set other fields in the PerEmp entity...
-            personalDetails.setEmail(email);
+            personalDetails.setEmpId(empId);
             personalDetails.setAdhar(aadhar);
             personalDetails.setPan(pan);
             personalDetails.setVal1(val1);
@@ -79,8 +79,8 @@ public class PersonalDetailsController {
     }
 
     @GetMapping(value = "/useruniquereq", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<PersonalDetailsDto> getUniqueUser(@RequestParam String email) {
-        PersonalDetails emp = personalDetailsRepo.findByEmail(email);
+    public ResponseEntity<PersonalDetailsDto> getUniqueUser(@RequestParam String empId){
+        PersonalDetails emp = personalDetailsRepo.findByEmpId(empId);
 
         if (emp != null) {
             List<String> filePaths = getFilePathsForPerEmp(emp);
@@ -88,7 +88,7 @@ public class PersonalDetailsController {
 
             PersonalDetailsDto responseDTO = new PersonalDetailsDto();
             responseDTO.setRegno(emp.getRegno());
-            responseDTO.setEmail(emp.getEmail());
+            responseDTO.setEmpId(emp.getEmpId());
             responseDTO.setAdhar(emp.getAdhar());
             responseDTO.setPan(emp.getPan());
             responseDTO.setVal1(emp.getVal1());
@@ -142,7 +142,7 @@ public class PersonalDetailsController {
 
     @PutMapping("/personalupdateDetails")
     public ResponseEntity<String> upDatePerEmpWithFiles(
-            @RequestParam(value = "email", required = false) String email,
+            @RequestParam(value = "empId", required = false) String empId,
             @RequestParam(value = "aadhar", required = false) String aadhar,
             @RequestParam(value = "pan", required = false) String pan,
             @RequestParam(value = "val1", required = false) String val1,
@@ -166,9 +166,9 @@ public class PersonalDetailsController {
             @RequestParam(value = "otherFile", required = false) MultipartFile otherFile) {
 
         try {
-            PersonalDetails perEmp = personalDetailsRepo.findByEmail(email);
+            PersonalDetails perEmp = personalDetailsRepo.findByEmpId(empId);
             perEmp.setRegno(perEmp.getRegno());
-            perEmp.setEmail(email);
+            perEmp.setEmpId(empId);
             perEmp.setAdhar(aadhar);
             perEmp.setPan(pan);
             perEmp.setVal1(val1);

@@ -48,38 +48,38 @@ public class AdminServiceImpl implements AdminService {
     }
     @Override
     @Transactional
-    public String deleteAdminRegister(String email){
-        adminRegisterRepo.deleteByEmail(email);
+    public String deleteAdminRegister(String empId){
+        adminRegisterRepo.deleteByEmpId(empId);
         return "deleted";
     }
     @Override
     @Transactional
-    public String deleteBankDetails(String email){
-        bankDetailsRepo.deleteByEmail(email);
+    public String deleteBankDetails(String empId){
+        bankDetailsRepo.deleteByEmpId(empId);
         return "deleted";
     }
     @Override
     @Transactional
-    public String deleteEmergencyDetails(String email){
-        emergencyDetailsRepo.deleteByEmail(email);
+    public String deleteEmergencyDetails(String empId){
+        emergencyDetailsRepo.deleteByEmpId(empId);
         return "deleted";
     }
     @Override
     @Transactional
-    public String deleteEmployeeDetails(String email){
-        employeeDetailsRepo.deleteByEmail(email);
+    public String deleteEmployeeDetails(String empId){
+        employeeDetailsRepo.deleteByEmpId(empId);
         return "deleted";
     }
     @Override
     @Transactional
     public String deleteFamilyDetails(String email){
-        familyDetailsRepo.deleteByEmail(email);
+        familyDetailsRepo.deleteByEmpId(email);
         return "deleted";
     }
     @Override
     @Transactional
-    public String deletePersonalDetails(String email){
-        personalDetailsRepo.deleteByEmail(email);
+    public String deletePersonalDetails(String empId){
+        personalDetailsRepo.deleteByEmpId(empId);
         return "deleted";
     }
     @Override

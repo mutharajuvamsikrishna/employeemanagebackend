@@ -19,8 +19,8 @@ public class RaiseDisputeServiceImpl implements RaiseDisputeService {
     }
 
     @Override
-    public List<RaiseDispute> getDisputeDetails(String email) {
-        return raiseDisputeRepo.findByEmail(email);
+    public List<RaiseDispute> getDisputeDetails(String empId) {
+        return raiseDisputeRepo.findByEmpId(empId);
     }
 
     @Override

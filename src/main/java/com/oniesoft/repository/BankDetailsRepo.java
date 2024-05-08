@@ -10,11 +10,11 @@ import java.util.List;
 
 @Repository
 public interface BankDetailsRepo extends JpaRepository<BankDetails, Long> {
-    BankDetails findByEmail(String email);
+    BankDetails findByEmpId(String empId);
 
-    void deleteByEmail(String email);
+    void deleteByEmpId(String empId);
 
-    @Query("SELECT p FROM BankDetails p WHERE " + "p.email LIKE CONCAT('%', :query, '%') "
+    @Query("SELECT p FROM BankDetails p WHERE " + "p.empId LIKE CONCAT('%', :query, '%') "
             + "OR p.name LIKE CONCAT('%', :query, '%')" + "OR p.accountNumber LIKE CONCAT('%', :query, '%')")
     List<BankDetails> searchBankDetails(@Param("query") String query);
 }

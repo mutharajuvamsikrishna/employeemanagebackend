@@ -11,8 +11,8 @@ import java.util.List;
 @Repository
 public interface PersonalDetailsRepo extends JpaRepository<PersonalDetails,Long> {
 
-    PersonalDetails findByEmail(String email);
-    void deleteByEmail(String email);
-    @Query("SELECT p FROM PersonalDetails p WHERE " + "p.email LIKE CONCAT('%', :query, '%') ")
+    PersonalDetails findByEmpId(String empId);
+    void deleteByEmpId(String empId);
+    @Query("SELECT p FROM PersonalDetails p WHERE " + "p.empId LIKE CONCAT('%', :query, '%') ")
     List<PersonalDetails> searchPersonalDetails(@Param("query") String query);
 }

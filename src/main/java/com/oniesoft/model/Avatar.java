@@ -9,7 +9,7 @@ public class Avatar {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long regno;
-    private String email;
+    private String empId;
     private String profile;
     public Avatar(){
 
@@ -23,12 +23,12 @@ public class Avatar {
         this.regno = regno;
     }
 
-    public String getEmail() {
-        return email;
+    public String getEmpId() {
+        return empId;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmpId(String empId) {
+        this.empId = empId;
     }
 
     public String getProfile() {
@@ -43,7 +43,7 @@ public class Avatar {
     public String toString() {
         return "Avatar{" +
                 "regno=" + regno +
-                ", email='" + email + '\'' +
+                ", empId='" + empId + '\'' +
                 ", profile='" + profile + '\'' +
                 '}';
     }

@@ -9,7 +9,7 @@ public class BankDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long regno;
-    private String email;
+    private String empId;
     private String bankName;
     private String branch;
     private String ifcCode;
@@ -28,12 +28,12 @@ public class BankDetails {
         this.regno = regno;
     }
 
-    public String getEmail() {
-        return email;
+    public String getEmpId() {
+        return empId;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmpId(String empId) {
+        this.empId = empId;
     }
 
     public String getBankName() {
@@ -88,7 +88,7 @@ public class BankDetails {
     public String toString() {
         return "BankDetails{" +
                 "regno=" + regno +
-                ", email='" + email + '\'' +
+                ", empId='" + empId + '\'' +
                 ", bankName='" + bankName + '\'' +
                 ", branch='" + branch + '\'' +
                 ", ifcCode='" + ifcCode + '\'' +

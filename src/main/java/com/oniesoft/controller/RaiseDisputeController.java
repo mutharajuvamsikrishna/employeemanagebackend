@@ -22,11 +22,12 @@ public class RaiseDisputeController {
     private String email;
     @PostMapping("/raisedisputedetails-save")
     public ResponseEntity<?> saveRaiseDisputeDetails(@RequestBody RaiseDispute raiseDispute){
+        System.out.println(raiseDispute.getEmail());
         String userSubject="";
         String userBody="";
         String adminSubject="";
         String adminBody="";
-        System.out.println(raiseDispute.getEmail());
+
         registerService.sendEmail(raiseDispute.getEmail(),userSubject,userBody);
         if(raiseDispute.getSelectedMainType().equals("HR")){
             raiseDispute.setSelectedMainType("ROLE_HR");
@@ -57,15 +58,15 @@ public class RaiseDisputeController {
 
     }
     @GetMapping("/getraisedisputedetails")
-    public List<RaiseDispute> getRaiseDisputeDetails(@RequestParam String email){
-        return raiseDisputeService.getDisputeDetails(email);
+    public List<RaiseDispute> getRaiseDisputeDetails(@RequestParam String empId){
+        return raiseDisputeService.getDisputeDetails(empId);
     }
    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_SUPERADMIN')")
     @GetMapping("/searchtickets")
     public List<RaiseDispute> searchTickets(@RequestParam String query){
         return raiseDisputeService.searchRaiseDispute(query);
     }
-   @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_SUPERADMIN')")
+
     @GetMapping("/getalltickets")
     public List<RaiseDispute> getTickets(){
         return raiseDisputeService.getAllTickets();
@@ -78,7 +79,7 @@ public class RaiseDisputeController {
         String userBody="";
         String adminSubject="";
         String adminBody="";
-        System.out.println(raiseDispute.getEmail());
+
         registerService.sendEmail(raiseDispute.getEmail(),userSubject,userBody);
         if(raiseDispute.getSelectedMainType().equals("ROLE_HR")){
             registerService.sendEmail(email,adminSubject,adminBody);

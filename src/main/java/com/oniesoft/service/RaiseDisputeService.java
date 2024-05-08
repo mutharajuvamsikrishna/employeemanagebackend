@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface RaiseDisputeService {
     public void addDisputeDetails(RaiseDispute raiseDispute);
-    public List<RaiseDispute> getDisputeDetails(@RequestParam String email);
+    public List<RaiseDispute> getDisputeDetails(@RequestParam String empId);
    public List<RaiseDispute> searchRaiseDispute(@Param("query") String query);
     public List<RaiseDispute> getAllTickets();
     public  void  putRaisTicketDetails(RaiseDispute raiseDispute);

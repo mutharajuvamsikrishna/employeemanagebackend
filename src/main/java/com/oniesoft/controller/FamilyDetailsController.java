@@ -20,8 +20,8 @@ public class FamilyDetailsController {
 
     }
     @GetMapping("/getfamilydetails")
-    public List<FamilyDetails> getEmployeeDetails(@RequestParam String email){
-        return familyDetailsService.getFamilyDetails(email);
+    public List<FamilyDetails> getEmployeeDetails(@RequestParam String empId){
+        return familyDetailsService.getFamilyDetails(empId);
     }
     @PutMapping("/familydetails-update")
     public ResponseEntity<?> updateEmployeeDetails(@RequestBody FamilyDetails familyDetails){

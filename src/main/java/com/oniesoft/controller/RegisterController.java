@@ -32,7 +32,7 @@ public class RegisterController {
     private PasswordEncoder passwordEncoder;
     @PostMapping("/sendotp")
     public ResponseEntity<String> sendOtp(@RequestBody AdminRegisterDto adminRegisterDto) {
-        AdminRegister adminRegister = adminRegisterRepo.findByEmailAndMob(adminRegisterDto.getEmail(), adminRegisterDto.getMob());
+        AdminRegister adminRegister = adminRegisterRepo.findByEmailOrMob(adminRegisterDto.getEmail(), adminRegisterDto.getMob());
         if (adminRegister != null) {
             return ResponseEntity.status(404).body("allready registered");
         }
@@ -64,8 +64,8 @@ public class RegisterController {
         return new ArrayList<>(regList);
     }
     @GetMapping("/getreg")
-    public AdminRegister getAdminRegister(@RequestParam String email){
-        return registerService.getRegister(email);
+    public AdminRegister getAdminRegister(@RequestParam String empId){
+        return registerService.getRegister(empId);
     }
     @PostConstruct
     public void addSuperAdmin(){
@@ -75,6 +75,7 @@ public class RegisterController {
         adminRegister.setPassword(passwordEncoder.encode(superAdminPassword));
         adminRegister.setName("ONiE Soft");
         adminRegister.setMob(superAdminMob);
+        adminRegister.setEmpId("E-1");
     AdminRegister adminRegister1=    adminRegisterRepo.findByEmail(superAdminEmail);
     if(adminRegister1==null) {
         adminRegisterRepo.save(adminRegister);

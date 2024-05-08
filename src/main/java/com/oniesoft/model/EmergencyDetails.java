@@ -6,7 +6,7 @@ import jakarta.persistence.Id;
 @Entity
 public class EmergencyDetails {
     @Id
-    private String email;
+    private String empId;
     private String name;
     private String relation;
     private String mobileNumber;
@@ -16,12 +16,12 @@ public class EmergencyDetails {
 
     }
 
-    public String getEmail() {
-        return email;
+    public String getEmpId() {
+        return empId;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmpId(String empId) {
+        this.empId = empId;
     }
 
     public String getName() {
@@ -67,7 +67,7 @@ public class EmergencyDetails {
     @Override
     public String toString() {
         return "EmergencyDetails{" +
-                "email='" + email + '\'' +
+                "empId='" + empId + '\'' +
                 ", name='" + name + '\'' +
                 ", relation='" + relation + '\'' +
                 ", mobileNumber='" + mobileNumber + '\'' +

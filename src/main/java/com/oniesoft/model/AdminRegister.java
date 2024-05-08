@@ -17,8 +17,10 @@ public class AdminRegister {
     private String roles;
     private String empId;
     private String personalEmail;
+    private String designation;
     private String ctc;
     private boolean checkBox;
+    private  boolean adminCheckBox;
 public AdminRegister(){
 
 }
@@ -87,6 +89,14 @@ public AdminRegister(){
         this.personalEmail = personalEmail;
     }
 
+    public String getDesignation() {
+        return designation;
+    }
+
+    public void setDesignation(String designation) {
+        this.designation = designation;
+    }
+
     public String getCtc() {
         return ctc;
     }
@@ -103,6 +113,14 @@ public AdminRegister(){
         this.checkBox = checkBox;
     }
 
+    public boolean isAdminCheckBox() {
+        return adminCheckBox;
+    }
+
+    public void setAdminCheckBox(boolean adminCheckBox) {
+        this.adminCheckBox = adminCheckBox;
+    }
+
     @Override
     public String toString() {
         return "AdminRegister{" +
@@ -114,8 +132,10 @@ public AdminRegister(){
                 ", roles='" + roles + '\'' +
                 ", empId='" + empId + '\'' +
                 ", personalEmail='" + personalEmail + '\'' +
+                ", designation='" + designation + '\'' +
                 ", ctc='" + ctc + '\'' +
                 ", checkBox=" + checkBox +
+                ", adminCheckBox=" + adminCheckBox +
                 '}';
     }
 }

@@ -4,6 +4,7 @@ import com.oniesoft.model.Avatar;
 import com.oniesoft.repository.ProfileRepo;
 import com.oniesoft.service.AvatarService;
 import com.oniesoft.service.FileService;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -25,5 +26,12 @@ private FileService fileService;
             avatar1.setProfile(avatarpath);
             profileRepo.save(avatar1);
         }
+    }
+
+    @Override
+
+    @Transactional
+    public void deleteAvatarImage(String empId) {
+        profileRepo.deleteByEmpId(empId);
     }
 }

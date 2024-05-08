@@ -10,7 +10,7 @@ public class EmployeeDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int laptopId;
-    private String email;
+    private String empId;
 private  String totalExperience;
 private String currentCtc;
 private String role;
@@ -19,7 +19,7 @@ private String joinDate;
 private String isLaptop;
 private String laptopIssueDate;
 private String laptopModel;
-private String empId;
+
 private String pf;
 private String domain;
 private String skills;
@@ -52,12 +52,12 @@ private String prevCtc;
         this.laptopId = laptopId;
     }
 
-    public String getEmail() {
-        return email;
+    public String getEmpId() {
+        return empId;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmpId(String empId) {
+        this.empId = empId;
     }
 
     public String getTotalExperience() {
@@ -122,14 +122,6 @@ private String prevCtc;
 
     public void setLaptopModel(String laptopModel) {
         this.laptopModel = laptopModel;
-    }
-
-    public String getEmpId() {
-        return empId;
-    }
-
-    public void setEmpId(String empId) {
-        this.empId = empId;
     }
 
     public String getPf() {
@@ -296,7 +288,7 @@ private String prevCtc;
     public String toString() {
         return "EmployeeDetails{" +
                 "laptopId=" + laptopId +
-                ", email='" + email + '\'' +
+                ", empId='" + empId + '\'' +
                 ", totalExperience='" + totalExperience + '\'' +
                 ", currentCtc='" + currentCtc + '\'' +
                 ", role='" + role + '\'' +
@@ -305,7 +297,6 @@ private String prevCtc;
                 ", isLaptop='" + isLaptop + '\'' +
                 ", laptopIssueDate='" + laptopIssueDate + '\'' +
                 ", laptopModel='" + laptopModel + '\'' +
-                ", empId='" + empId + '\'' +
                 ", pf='" + pf + '\'' +
                 ", domain='" + domain + '\'' +
                 ", skills='" + skills + '\'' +

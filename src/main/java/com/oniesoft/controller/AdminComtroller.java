@@ -16,7 +16,7 @@ public class AdminComtroller {
    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_SUPERADMIN')")
     @GetMapping("/getadmindetails")
     public List<AdminRegister> getAdminDetails(){
-        System.out.println("ok");
+
        return adminService.getAllAdminRegisters();
     }
    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_SUPERADMIN')")
@@ -46,8 +46,8 @@ public class AdminComtroller {
     }
    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_SUPERADMIN')")
     @DeleteMapping("/deleteadminregister")
-    public ResponseEntity<?> deleteAdminRegister(@RequestParam String email) {
-        String status = adminService.deleteAdminRegister(email);
+    public ResponseEntity<?> deleteAdminRegister(@RequestParam String empId) {
+        String status = adminService.deleteAdminRegister(empId);
         if (status != null) {
           return   ResponseEntity.status(200).body("ok");
         } else {
@@ -56,8 +56,8 @@ public class AdminComtroller {
     }
    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_SUPERADMIN')")
     @DeleteMapping("/deletebankdetails")
-    public ResponseEntity<?> deleteBank(@RequestParam String email) {
-        String status = adminService.deleteBankDetails(email);
+    public ResponseEntity<?> deleteBank(@RequestParam String empId) {
+        String status = adminService.deleteBankDetails(empId);
         if (status != null) {
             return   ResponseEntity.status(200).body("ok");
         } else {
@@ -66,8 +66,8 @@ public class AdminComtroller {
     }
    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_SUPERADMIN')")
     @DeleteMapping("/deleteemergemcydetails")
-    public ResponseEntity<?> deleteEmergencyDetails(@RequestParam String email) {
-        String status = adminService.deleteEmergencyDetails(email);
+    public ResponseEntity<?> deleteEmergencyDetails(@RequestParam String empId) {
+        String status = adminService.deleteEmergencyDetails(empId);
         if (status != null) {
             return   ResponseEntity.status(200).body("ok");
         } else {
@@ -76,8 +76,8 @@ public class AdminComtroller {
     }
    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_SUPERADMIN')")
     @DeleteMapping("/deleteemployeedetails")
-    public ResponseEntity<?> deleteEmployeeDetails(@RequestParam String email) {
-        String status = adminService.deleteEmployeeDetails(email);
+    public ResponseEntity<?> deleteEmployeeDetails(@RequestParam String empId) {
+        String status = adminService.deleteEmployeeDetails(empId);
         if (status != null) {
             return   ResponseEntity.status(200).body("ok");
         } else {
@@ -86,8 +86,8 @@ public class AdminComtroller {
     }
    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_SUPERADMIN')")
     @DeleteMapping("/deletefamilydetails")
-    public ResponseEntity<?> deleteFamilyDetails(@RequestParam String email) {
-        String status = adminService.deleteFamilyDetails(email);
+    public ResponseEntity<?> deleteFamilyDetails(@RequestParam String empId) {
+        String status = adminService.deleteFamilyDetails(empId);
         if (status != null) {
             return   ResponseEntity.status(200).body("ok");
         } else {
@@ -96,8 +96,8 @@ public class AdminComtroller {
     }
    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_SUPERADMIN')")
     @DeleteMapping("/deletepersonaldetails")
-    public ResponseEntity<?> deletePersonalDetails(@RequestParam String email) {
-        String status = adminService.deletePersonalDetails(email);
+    public ResponseEntity<?> deletePersonalDetails(@RequestParam String empId) {
+        String status = adminService.deletePersonalDetails(empId);
         if (status != null) {
             return   ResponseEntity.status(200).body("ok");
         } else {

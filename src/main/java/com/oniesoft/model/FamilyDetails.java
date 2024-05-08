@@ -6,7 +6,7 @@ import jakarta.persistence.Id;
 @Entity
 public class FamilyDetails {
     @Id
-    private String email;
+    private String empId;
     private String fatherName;
     private String fatherAadhar;
     private  String fatherPanCard;
@@ -33,12 +33,12 @@ public class FamilyDetails {
 
     }
 
-    public String getEmail() {
-        return email;
+    public String getEmpId() {
+        return empId;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmpId(String empId) {
+        this.empId = empId;
     }
 
     public String getFatherName() {
@@ -220,7 +220,7 @@ public class FamilyDetails {
     @Override
     public String toString() {
         return "FamilyDetails{" +
-                "email='" + email + '\'' +
+                "empId='" + empId + '\'' +
                 ", fatherName='" + fatherName + '\'' +
                 ", fatherAadhar='" + fatherAadhar + '\'' +
                 ", fatherPanCard='" + fatherPanCard + '\'' +

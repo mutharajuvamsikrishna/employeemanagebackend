@@ -5,7 +5,7 @@ import java.util.List;
 
 public class AvatarDto {
     private Long regno;
-    private String email;
+    private String empId;
     private String profile;
     private List<String> filePaths;
     private List<byte[]> fileContents;
@@ -20,12 +20,12 @@ public AvatarDto(){
         this.regno = regno;
     }
 
-    public String getEmail() {
-        return email;
+    public String getEmpId() {
+        return empId;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmpId(String empId) {
+        this.empId = empId;
     }
 
     public String getProfile() {
@@ -56,7 +56,7 @@ public AvatarDto(){
     public String toString() {
         return "AvatarDto{" +
                 "regno=" + regno +
-                ", email='" + email + '\'' +
+                ", empId='" + empId + '\'' +
                 ", profile='" + profile + '\'' +
                 ", filePaths=" + filePaths +
                 ", fileContents=" + fileContents +

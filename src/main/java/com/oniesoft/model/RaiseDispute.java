@@ -11,6 +11,7 @@ public class RaiseDispute {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int regno;
     private String email;
+    private String empId;
     private String status;
     private String selectedSubType;
     private String  selectedMainType;
@@ -36,6 +37,14 @@ public class RaiseDispute {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getEmpId() {
+        return empId;
+    }
+
+    public void setEmpId(String empId) {
+        this.empId = empId;
     }
 
     public String getStatus() {
@@ -99,6 +108,7 @@ public class RaiseDispute {
         return "RaiseDispute{" +
                 "regno=" + regno +
                 ", email='" + email + '\'' +
+                ", empId='" + empId + '\'' +
                 ", status='" + status + '\'' +
                 ", selectedSubType='" + selectedSubType + '\'' +
                 ", selectedMainType='" + selectedMainType + '\'' +

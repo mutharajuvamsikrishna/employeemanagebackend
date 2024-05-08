@@ -10,8 +10,8 @@ import java.util.List;
 
 @Repository
 public interface FamilyDetailsRepo extends JpaRepository <FamilyDetails,String>{
-    List<FamilyDetails> findByEmail(String email);
-    void deleteByEmail(String email);
-    @Query("SELECT p FROM FamilyDetails p WHERE " + "p.email LIKE CONCAT('%', :query, '%') ")
+    List<FamilyDetails> findByEmpId(String empId);
+    void deleteByEmpId(String empId);
+    @Query("SELECT p FROM FamilyDetails p WHERE " + "p.empId LIKE CONCAT('%', :query, '%') ")
     List<FamilyDetails> searchFamilyDetails(@Param("query") String query);
 }

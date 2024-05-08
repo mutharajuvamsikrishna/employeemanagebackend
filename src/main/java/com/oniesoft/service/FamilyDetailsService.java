@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface FamilyDetailsService {
     public void addFamilyDetails(FamilyDetails familyDetails);
-    public List<FamilyDetails> getFamilyDetails(@RequestParam String email);
+    public List<FamilyDetails> getFamilyDetails(@RequestParam String empId);
 }

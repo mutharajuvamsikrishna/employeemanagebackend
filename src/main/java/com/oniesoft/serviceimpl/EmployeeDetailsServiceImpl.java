@@ -18,7 +18,7 @@ public class EmployeeDetailsServiceImpl implements EmployeeDetailsService {
     }
 
     @Override
-    public List<EmployeeDetails> getEmployeeDetails(String email) {
-        return employeeDetailsRepo.findByEmail(email);
+    public List<EmployeeDetails> getEmployeeDetails(String empId) {
+        return employeeDetailsRepo.findByEmpId(empId);
     }
     }

@@ -1,12 +1,17 @@
 package com.oniesoft.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
 public class AdminCheckList {
     @Id
-    private String email;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    private String empId;
+    private String employeeEmpId;
     private boolean candidateConfirmation;
     private boolean hrAssignment;
     private boolean submitRelievingLetter;
@@ -36,12 +41,28 @@ public class AdminCheckList {
 
     }
 
-    public String getEmail() {
-        return email;
+    public Integer getId() {
+        return id;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getEmpId() {
+        return empId;
+    }
+
+    public void setEmpId(String empId) {
+        this.empId = empId;
+    }
+
+    public String getEmployeeEmpId() {
+        return employeeEmpId;
+    }
+
+    public void setEmployeeEmpId(String employeeEmpId) {
+        this.employeeEmpId = employeeEmpId;
     }
 
     public boolean isCandidateConfirmation() {
@@ -247,7 +268,9 @@ public class AdminCheckList {
     @Override
     public String toString() {
         return "AdminCheckList{" +
-                "email='" + email + '\'' +
+                "id=" + id +
+                ", empId='" + empId + '\'' +
+                ", employeeEmpId='" + employeeEmpId + '\'' +
                 ", candidateConfirmation=" + candidateConfirmation +
                 ", hrAssignment=" + hrAssignment +
                 ", submitRelievingLetter=" + submitRelievingLetter +

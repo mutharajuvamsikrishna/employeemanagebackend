@@ -10,7 +10,7 @@ public class PersonalDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long regno;
-    private String email;
+    private String empId;
     private String adhar;
     private String pan;
     private String val1;
@@ -44,12 +44,12 @@ public PersonalDetails(){
         this.regno = regno;
     }
 
-    public String getEmail() {
-        return email;
+    public String getEmpId() {
+        return empId;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmpId(String empId) {
+        this.empId = empId;
     }
 
     public String getAdhar() {
@@ -224,7 +224,7 @@ public PersonalDetails(){
     public String toString() {
         return "PersonalDetails{" +
                 "regno=" + regno +
-                ", email='" + email + '\'' +
+                ", empId='" + empId + '\'' +
                 ", adhar='" + adhar + '\'' +
                 ", pan='" + pan + '\'' +
                 ", val1='" + val1 + '\'' +

@@ -24,35 +24,35 @@ private AvatarService avatarService;
     private ProfileRepo profileRepo;
 
     @PostMapping("/avatar")
-    public ResponseEntity<?> addAvatarDetails(@RequestParam String email,  MultipartFile avatarFile) throws IOException {
-     Avatar Existavatar=   profileRepo.findByEmail(email);
+    public ResponseEntity<?> addAvatarDetails(@RequestParam String empId,  MultipartFile avatarFile) throws IOException {
+     Avatar Existavatar=   profileRepo.findByEmpId(empId);
         if(Existavatar!=null){
             avatarService.addAvatar(Existavatar,avatarFile);
             return ResponseEntity.ok("ok");
         }else {
             Avatar avatar = new Avatar();
-            avatar.setEmail(email);
+            avatar.setEmpId(empId);
             avatarService.addAvatar(avatar, avatarFile);
             return ResponseEntity.ok("ok");
         }
     }
     @PutMapping("/avatar-update")
-    public ResponseEntity<?> updateAvatar(@RequestParam Long regno,@RequestParam String email,@RequestParam(required = false) MultipartFile avatarFile) throws IOException {
+    public ResponseEntity<?> updateAvatar(@RequestParam Long regno,@RequestParam String empId,@RequestParam(required = false) MultipartFile avatarFile) throws IOException {
 
-        Avatar avatar =profileRepo.findByEmail(email);
+        Avatar avatar =profileRepo.findByEmpId(empId);
         avatarService.addAvatar(avatar, avatarFile);
         return ResponseEntity.ok("ok");
 
     }
     @GetMapping(value = "/getavatardetails", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<AvatarDto> getAvatarDetails(@RequestParam String email) {
-              Avatar avatar = profileRepo.findByEmail(email);
+    public ResponseEntity<AvatarDto> getAvatarDetails(@RequestParam String empId) {
+              Avatar avatar = profileRepo.findByEmpId(empId);
         if (avatar != null) {
             List<String> filePaths = getFilePathsForAvatar(avatar);
             List<byte[]> fileContents = getFileContents(filePaths);
            AvatarDto avatarDto=new AvatarDto();
             avatarDto.setRegno(avatarDto.getRegno());
-            avatarDto.setEmail(avatar.getEmail());
+            avatarDto.setEmpId(avatarDto.getEmpId());
             avatarDto.setProfile(avatar.getProfile());
             avatarDto.setFileContents(fileContents);
             return ResponseEntity.ok(avatarDto);
@@ -79,4 +79,10 @@ private AvatarService avatarService;
         }
         return fileContents;
     }
+    @DeleteMapping("/deletavatar")
+    public ResponseEntity<?> deleteAvatar(@RequestParam String empId){
+        avatarService.deleteAvatarImage(empId);
+         return ResponseEntity.status(200).body("delete sucessfully");
+    }
 }
+

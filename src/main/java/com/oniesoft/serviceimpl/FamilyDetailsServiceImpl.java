@@ -17,8 +17,8 @@ public class FamilyDetailsServiceImpl implements FamilyDetailsService {
     }
 
     @Override
-    public List<FamilyDetails> getFamilyDetails(String email){
+    public List<FamilyDetails> getFamilyDetails(String empId){
 
-        return familyDetailsRepo.findByEmail(email);
+        return familyDetailsRepo.findByEmpId(empId);
     }
 }

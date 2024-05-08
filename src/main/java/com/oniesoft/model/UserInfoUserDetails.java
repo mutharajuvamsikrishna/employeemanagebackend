@@ -17,7 +17,7 @@ public class UserInfoUserDetails implements UserDetails {
     private List<GrantedAuthority> authorities;
 
     public UserInfoUserDetails(AdminRegister userInfo) {
-        name = userInfo.getEmail();
+        name = userInfo.getEmpId();
 
         password = userInfo.getPassword();
 
