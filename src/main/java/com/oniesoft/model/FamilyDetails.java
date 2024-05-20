@@ -10,25 +10,44 @@ public class FamilyDetails {
     private String fatherName;
     private String fatherAadhar;
     private  String fatherPanCard;
+    private String fatherMob;
+    private String fatherAge;
+    private String fatherAddress;
+
     private String motherName;
     private String motherAadhar;
     private String motherPan;
+    private String motherMob;
+    private String motherAge;
+    private String motherAddress;
     private String married;
     private String marriedName;
     private String marriedAadhar;
     private String marriedPan;
+    private String marriedMob;
+    private String marriedAge;
+    private String marriedAddress;
     private String children;
     private String childname;
     private String childAadhar;
     private String childPan;
+    private String childMob;
+    private String childAge;
+    private String childAddress;
     private String children1;
     private String childname1;
     private String childAadhar1;
     private String childPan1;
+    private String childMob1;
+    private String childAge1;
+    private String childAddress1;
     private String children2;
     private String childname2;
     private String childAadhar2;
     private String childPan2;
+    private String childMob2;
+    private String childAge2;
+    private String childAddress2;
     public FamilyDetails(){
 
     }
@@ -65,6 +84,30 @@ public class FamilyDetails {
         this.fatherPanCard = fatherPanCard;
     }
 
+    public String getFatherMob() {
+        return fatherMob;
+    }
+
+    public void setFatherMob(String fatherMob) {
+        this.fatherMob = fatherMob;
+    }
+
+    public String getFatherAge() {
+        return fatherAge;
+    }
+
+    public void setFatherAge(String fatherAge) {
+        this.fatherAge = fatherAge;
+    }
+
+    public String getFatherAddress() {
+        return fatherAddress;
+    }
+
+    public void setFatherAddress(String fatherAddress) {
+        this.fatherAddress = fatherAddress;
+    }
+
     public String getMotherName() {
         return motherName;
     }
@@ -87,6 +130,30 @@ public class FamilyDetails {
 
     public void setMotherPan(String motherPan) {
         this.motherPan = motherPan;
+    }
+
+    public String getMotherMob() {
+        return motherMob;
+    }
+
+    public void setMotherMob(String motherMob) {
+        this.motherMob = motherMob;
+    }
+
+    public String getMotherAge() {
+        return motherAge;
+    }
+
+    public void setMotherAge(String motherAge) {
+        this.motherAge = motherAge;
+    }
+
+    public String getMotherAddress() {
+        return motherAddress;
+    }
+
+    public void setMotherAddress(String motherAddress) {
+        this.motherAddress = motherAddress;
     }
 
     public String getMarried() {
@@ -121,6 +188,30 @@ public class FamilyDetails {
         this.marriedPan = marriedPan;
     }
 
+    public String getMarriedMob() {
+        return marriedMob;
+    }
+
+    public void setMarriedMob(String marriedMob) {
+        this.marriedMob = marriedMob;
+    }
+
+    public String getMarriedAge() {
+        return marriedAge;
+    }
+
+    public void setMarriedAge(String marriedAge) {
+        this.marriedAge = marriedAge;
+    }
+
+    public String getMarriedAddress() {
+        return marriedAddress;
+    }
+
+    public void setMarriedAddress(String marriedAddress) {
+        this.marriedAddress = marriedAddress;
+    }
+
     public String getChildren() {
         return children;
     }
@@ -151,6 +242,30 @@ public class FamilyDetails {
 
     public void setChildPan(String childPan) {
         this.childPan = childPan;
+    }
+
+    public String getChildMob() {
+        return childMob;
+    }
+
+    public void setChildMob(String childMob) {
+        this.childMob = childMob;
+    }
+
+    public String getChildAge() {
+        return childAge;
+    }
+
+    public void setChildAge(String childAge) {
+        this.childAge = childAge;
+    }
+
+    public String getChildAddress() {
+        return childAddress;
+    }
+
+    public void setChildAddress(String childAddress) {
+        this.childAddress = childAddress;
     }
 
     public String getChildren1() {
@@ -185,6 +300,30 @@ public class FamilyDetails {
         this.childPan1 = childPan1;
     }
 
+    public String getChildMob1() {
+        return childMob1;
+    }
+
+    public void setChildMob1(String childMob1) {
+        this.childMob1 = childMob1;
+    }
+
+    public String getChildAge1() {
+        return childAge1;
+    }
+
+    public void setChildAge1(String childAge1) {
+        this.childAge1 = childAge1;
+    }
+
+    public String getChildAddress1() {
+        return childAddress1;
+    }
+
+    public void setChildAddress1(String childAddress1) {
+        this.childAddress1 = childAddress1;
+    }
+
     public String getChildren2() {
         return children2;
     }
@@ -217,6 +356,30 @@ public class FamilyDetails {
         this.childPan2 = childPan2;
     }
 
+    public String getChildMob2() {
+        return childMob2;
+    }
+
+    public void setChildMob2(String childMob2) {
+        this.childMob2 = childMob2;
+    }
+
+    public String getChildAge2() {
+        return childAge2;
+    }
+
+    public void setChildAge2(String childAge2) {
+        this.childAge2 = childAge2;
+    }
+
+    public String getChildAddress2() {
+        return childAddress2;
+    }
+
+    public void setChildAddress2(String childAddress2) {
+        this.childAddress2 = childAddress2;
+    }
+
     @Override
     public String toString() {
         return "FamilyDetails{" +
@@ -224,25 +387,43 @@ public class FamilyDetails {
                 ", fatherName='" + fatherName + '\'' +
                 ", fatherAadhar='" + fatherAadhar + '\'' +
                 ", fatherPanCard='" + fatherPanCard + '\'' +
+                ", fatherMob='" + fatherMob + '\'' +
+                ", fatherAge='" + fatherAge + '\'' +
+                ", fatherAddress='" + fatherAddress + '\'' +
                 ", motherName='" + motherName + '\'' +
                 ", motherAadhar='" + motherAadhar + '\'' +
                 ", motherPan='" + motherPan + '\'' +
+                ", motherMob='" + motherMob + '\'' +
+                ", motherAge='" + motherAge + '\'' +
+                ", motherAddress='" + motherAddress + '\'' +
                 ", married='" + married + '\'' +
                 ", marriedName='" + marriedName + '\'' +
                 ", marriedAadhar='" + marriedAadhar + '\'' +
                 ", marriedPan='" + marriedPan + '\'' +
+                ", marriedMob='" + marriedMob + '\'' +
+                ", marriedAge='" + marriedAge + '\'' +
+                ", marriedAddress='" + marriedAddress + '\'' +
                 ", children='" + children + '\'' +
                 ", childname='" + childname + '\'' +
                 ", childAadhar='" + childAadhar + '\'' +
                 ", childPan='" + childPan + '\'' +
+                ", childMob='" + childMob + '\'' +
+                ", childAge='" + childAge + '\'' +
+                ", childAddress='" + childAddress + '\'' +
                 ", children1='" + children1 + '\'' +
                 ", childname1='" + childname1 + '\'' +
                 ", childAadhar1='" + childAadhar1 + '\'' +
                 ", childPan1='" + childPan1 + '\'' +
+                ", childMob1='" + childMob1 + '\'' +
+                ", childAge1='" + childAge1 + '\'' +
+                ", childAddress1='" + childAddress1 + '\'' +
                 ", children2='" + children2 + '\'' +
                 ", childname2='" + childname2 + '\'' +
                 ", childAadhar2='" + childAadhar2 + '\'' +
                 ", childPan2='" + childPan2 + '\'' +
+                ", childMob2='" + childMob2 + '\'' +
+                ", childAge2='" + childAge2 + '\'' +
+                ", childAddress2='" + childAddress2 + '\'' +
                 '}';
     }
 }
