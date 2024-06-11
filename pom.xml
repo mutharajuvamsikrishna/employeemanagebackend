@@ -58,7 +58,7 @@
 				<artifactId>spring-boot-starter-security</artifactId>
 			</dependency>
 
-			<!-- jjwt library for working with JSON Web Tokens -->
+			<!-- jjwt library for working with JSON Web Token s -->
 			<dependency>
 				<groupId>io.jsonwebtoken</groupId>
 				<artifactId>jjwt-api</artifactId>
